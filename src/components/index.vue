@@ -1,24 +1,27 @@
 <template>
   <div class="index">
-    <div class="header">
-      济南追溯
-    </div>
-    <div class="nav">
-      <div class="navLeft">
-        <img src="../assets/logo.png" alt="">
-        <p>追溯码</p>
-        <span>{{stockNo}}</span>
+    <div id="captureId" v-show="firstFlag">
+      <div class="header">
+        济南追溯
       </div>
-      <div class="navRight">
-        <p>商品名称</p>
-        <span>{{goodsName}}</span>
-        <p>追溯日期</p>
-        <span>{{stockTime}}</span>
-        <p>追溯下载</p>
-        <i><img src="../assets/下载.png" alt=""></i>
+      <div class="nav">
+        <div class="navLeft">
+          <div id="qrcode"></div>
+          <p>追溯码</p>
+          <span>{{stockNo}}</span>
+        </div>
+        <div class="navRight">
+          <p>商品名称</p>
+          <span>{{goodsName}}</span>
+          <p>追溯日期</p>
+          <span>{{stockTime}}</span>
+          <p>追溯下载</p>
+          <i @click="downLoad"><img src="../assets/下载.png" alt=""></i>
+        </div>
       </div>
     </div>
-    <div class="title">
+    <!-- <img class="show-img" :src="dataURL" alt="" v-show="!firstFlag"> -->
+    <div class="title" :style="{display: titleDiv}">
       <el-tabs class="el-tabs" v-model="activeName" @tab-click="handleClick">
         <el-tab-pane class="el-tab-pane" label="购买信息" name="first">
           <el-collapse v-model="activeNameOne" @change="handleChange">
@@ -136,7 +139,7 @@
                   <img src="../assets/销售.png" alt="">
                 </i>批发
               </template>
-              <div class="divLeft">
+              <div class="divLeft divLeftBox">
                 <span>销售企业</span>
                 <span class="divLeftTwo">地址</span>
                 <span>企业法人</span>
@@ -186,7 +189,7 @@
                   <img src="../assets/销售.png" alt="">
                 </i>零售
               </template>
-              <div class="divLeft">
+              <div class="divLeft divLeftBox">
                 <span>销售企业</span>
                 <span class="divLeftTwo">地址</span>
                 <span>企业法人</span>
@@ -256,13 +259,21 @@
         </el-tab-pane>
       </el-tabs>
     </div>
+    <img class="show-img" :src="dataURL" alt="" v-show="!firstFlag">
   </div>
 </template>
 
 <script>
+import QRCode from 'qrcodejs2'
+import html2canvas from 'html2canvas'
+
 export default {
+  component: { QRCode },
   data () {
     return {
+      firstFlag: true,
+      dataURL: '',
+      titleDiv: '',
       activeName: 'first',
       activeNameOne: ['1'],
       activeNameTwo: ['1'],
@@ -302,6 +313,10 @@ export default {
       Wholesale: {
       }
     }
+  },
+  created () {
+    this.imgSRC = window.location.href
+    this.firstFlag = true
   },
   mounted () {
     this.axios({
@@ -355,11 +370,40 @@ export default {
     }).catch(err => {
       console.log(err)
     })
+    // this.qrcode()
+    this.$nextTick(function () {
+      this.qrcode()
+    })
   },
   methods: {
     handleClick (tab, event) {
     },
     handleChange (val) {
+    },
+    downLoad () {
+      // this.$nextTick(function () {
+      //   this.toImg()
+      // })
+      this.titleDiv = 'none'
+      this.toImg()
+    },
+    qrcode () {
+      let qrcode = new QRCode('qrcode', {
+        width: 110,
+        height: 110,
+        text: 'https://baidu.com', // 二维码内容
+        render: 'canvas' // 设置渲染方式（有table和canvas两种方式，默认canvas）
+      })
+      console.log(qrcode)
+    },
+    toImg () {
+      html2canvas(document.querySelector('#captureId')).then(canvas => {
+        let imgUrl = canvas.toDataURL('image/png')
+        this.dataURL = imgUrl
+        this.firstFlag = false
+      }).catch(err => {
+        console.log(err)
+      })
     }
   }
 }
@@ -370,6 +414,10 @@ export default {
   padding: 0;
   background-color: #dcdbdc;
   height: 130vh;
+  .show-img{
+    width: 100%;
+    margin-top: 50%;
+  }
   .header{
     height: 42px;
     width: 100%;
@@ -388,33 +436,32 @@ export default {
     border-radius: 5px;
     display: flex;
     .navLeft{
-      width: 50%;
+      width: 55%;
       height: 150px;
-      // border: 1px solid red;
-      img{
-        width: 120px;
-        height: 120px;
-        display: block;
+      #qrcode{
+        width: 110px;
+        height: 110px;
+        line-height: 110px;
         margin: auto;
+        margin-top: 5px;
       }
       p{
-        font-size: 12px;
-        margin-top: -10px;
+        font-size: 14px;
+        margin-top: 0px;
         margin-bottom: 0;
         font-weight: bolder;
         letter-spacing: 5px;
         text-align: center;
       }
       span{
-        font-size: 12px;
+        font-size: 15px;
         color: #0a895c;
         font-weight: bolder;
         text-align: center;
       }
     }
     .navRight{
-      // border: 1px solid red;
-      width: 50%;
+      width: 45%;
       height: 150px;
       float: right;
       p{
@@ -424,13 +471,12 @@ export default {
         font-size: 13px;
         font-weight: bolder;
         text-align: left;
-        padding-left: 10%;
       }
       span{
         display: block;
         font-size: 15px;
         text-align: left;
-        padding-left: 26%;
+        padding-left: 16%;
         font-weight: bolder;
         color: #0a895c;
       }
@@ -439,7 +485,7 @@ export default {
           float: left;
           height: 20px;
           width: 90px;
-          margin-left: 26%;
+          margin-left: 16%;
         }
       }
     }
@@ -525,6 +571,9 @@ export default {
         .divLeftThree{
           letter-spacing: 7px;
         }
+      }
+      .divLeftBox{
+        width: 40%;
       }
       .divRight{
         width: 70%;
