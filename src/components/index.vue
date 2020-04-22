@@ -1,5 +1,5 @@
 <template>
-  <div class="index">
+  <div class="index" :style="{height: indexHeight}">
     <div id="captureId" v-show="firstFlag">
       <div class="header">
         济南追溯
@@ -20,7 +20,6 @@
         </div>
       </div>
     </div>
-    <!-- <img class="show-img" :src="dataURL" alt="" v-show="!firstFlag"> -->
     <div class="title" :style="{display: titleDiv}">
       <el-tabs class="el-tabs" v-model="activeName" @tab-click="handleClick">
         <el-tab-pane class="el-tab-pane" label="购买信息" name="first">
@@ -31,19 +30,27 @@
                   <img src="../assets/信息(1).png" alt="">
                 </i>购买信息
               </template>
-              <div class="divLeft">
-                <span>卖家名称</span>
-                <span>购买价格</span>
-                <span>购买数量</span>
-                <span class="divLeftThree">总金额</span>
-                <span>购买日期</span>
-              </div>
-              <div class="divRight">
-                <span>{{Purchase.shopname}}</span>
-                <span>{{Purchase.goodsprice}}</span>
-                <span>{{Purchase.goodscount}}</span>
-                <span>{{Purchase.goodssum}}</span>
-                <span>{{Purchase.purchasedate}}</span>
+              <div class="contain">
+                <div class="spanBox">
+                  <span class="divLeft">卖家名称</span>
+                  <span class="divRight">{{Purchase.shopname}}</span>
+                </div>
+                <div class="spanBox">
+                  <span class="divLeft">购买价格</span>
+                  <span class="divRight">{{Purchase.goodsprice}}</span>
+                </div>
+                <div class="spanBox">
+                  <span class="divLeft">购买数量</span>
+                  <span class="divRight">{{Purchase.goodscount}}</span>
+                </div>
+                <div class="spanBox">
+                  <span class="divLeftThree divLeft">总金额</span>
+                  <span class="divRight">{{Purchase.goodssum}}</span>
+                </div>
+                <div class="spanBox">
+                  <span class="divLeft">购买日期</span>
+                  <span class="divRight">{{Purchase.purchasedate}}</span>
+                </div>
               </div>
               <template slot="title">
                 <i class="arrow">
@@ -59,15 +66,19 @@
                   <img src="../assets/检测(4).png" alt="">
                 </i>检测信息
               </template>
-              <div class="divLeft">
-                <span>检测结果</span>
-                <span>检测时间</span>
-                <span>检测机构</span>
-              </div>
-              <div class="divRight">
-                <span>{{Dete.results}}</span>
-                <span>{{Dete.detetime}}</span>
-                <span>{{Dete.detesgs}}</span>
+              <div class="contain">
+                <div class="spanBox">
+                  <span class="divLeft">检测结果</span>
+                  <span class="divRight">{{Dete.results}}</span>
+                </div>
+                <div class="spanBox">
+                  <span class="divLeft">检测时间</span>
+                  <span class="divRight">{{Dete.detetime}}</span>
+                </div>
+                <div class="spanBox">
+                  <span class="divLeft">检测机构</span>
+                  <span class="divRight">{{Dete.detesgs}}</span>
+                </div>
               </div>
               <template slot="title">
                 <i class="arrow">
@@ -85,15 +96,19 @@
                   <img src="../assets/生产.png" alt="">
                 </i>生产者信息
               </template>
-              <div class="divLeft">
-                <span class="divLeftThree">生产者</span>
-                <span>联系方式</span>
-                <span class="divLeftTwo">地址</span>
-              </div>
-              <div class="divRight">
-                <span>{{Producer.producer}}</span>
-                <span>{{Producer.phone}}</span>
-                <span>{{Producer.address}}</span>
+              <div class="contain">
+                <div class="spanBox">
+                  <span class="divLeft divLeftThree">生产者</span>
+                  <span class="divRight">{{Producer.producer}}</span>
+                </div>
+                <div class="spanBox">
+                  <span class="divLeft">联系方式</span>
+                  <span class="divRight">{{Producer.phone}}</span>
+                </div>
+                <div class="spanBox">
+                  <span class="divLeft divLeftTwo">地址</span>
+                  <span class="divRight">{{Producer.address}}</span>
+                </div>
               </div>
               <template slot="title">
                 <i class="arrow">
@@ -109,19 +124,27 @@
                   <img src="../assets/环节.png" alt="">
                 </i>生产环节
               </template>
-              <div class="divLeft">
-                <span>种植地址</span>
-                <span class="divLeftTwo">土壤</span>
-                <span>种植时间</span>
-                <span>肥料品牌</span>
-                <span class="divLeftTwo">光照</span>
-              </div>
-              <div class="divRight">
-                <span>{{Link.planting_address}}</span>
-                <span>{{Link.soil}}</span>
-                <span>{{Link.soildate}}</span>
-                <span>{{Link.fertilize}}</span>
-                <span>{{Link.beam}}</span>
+              <div class="contain">
+                <div class="spanBox">
+                  <span class="divLeft">种植地址</span>
+                  <span class="divRight">{{Link.planting_address}}</span>
+                </div>
+                <div class="spanBox">
+                  <span class="divLeft divLeftTwo">土壤</span>
+                  <span class="divRight">{{Link.soil}}</span>
+                </div>
+                <div class="spanBox">
+                  <span class="divLeft">种植时间</span>
+                  <span class="divRight">{{Link.soildate}}</span>
+                </div>
+                <div class="spanBox">
+                  <span class="divLeft">肥料品牌</span>
+                  <span class="divRight">{{Link.fertilize}}</span>
+                </div>
+                <div class="spanBox">
+                  <span class="divLeft divLeftTwo">光照</span>
+                  <span class="divRight">{{Link.beam}}</span>
+                </div>
               </div>
               <template slot="title">
                 <i class="arrow">
@@ -139,17 +162,23 @@
                   <img src="../assets/销售.png" alt="">
                 </i>批发
               </template>
-              <div class="divLeft divLeftBox">
-                <span>销售企业</span>
-                <span class="divLeftTwo">地址</span>
-                <span>企业法人</span>
-                <span>统一社会信用代码</span>
-              </div>
-              <div class="divRight divRightTwo">
-                <span>山匡综合交易农产品综批发市场</span>
-                <span>济南市槐荫区济齐路与西外环</span>
-                <span>王浩</span>
-                <span>16541321654512165461</span>
+              <div class="contain">
+                <div class="spanBox">
+                  <span class="divLeft divLeftBox">销售企业</span>
+                  <span class="divRight divRightTwo">匡山综合交易农产品批发市场</span>
+                </div>
+                <div class="spanBox">
+                  <span class="divLeft divLeftTwo divLeftBox">地址</span>
+                  <span class="divRight divRightTwo">济南市槐荫区济齐路与西外环</span>
+                </div>
+                <div class="spanBox">
+                  <span class="divLeft divLeftBox">企业法人</span>
+                  <span class="divRight divRightTwo">王浩</span>
+                </div>
+                <div class="spanBox">
+                  <span class="divLeft divLeftBox">统一社会信用代码</span>
+                  <span class="divRight divRightTwo">91370104792642457G</span>
+                </div>
               </div>
               <template slot="title">
                 <i class="arrow">
@@ -165,15 +194,19 @@
                   <img src="../assets/批发商.png" alt="">
                 </i>批发商户
               </template>
-              <div class="divLeft">
-                <span>商户名称</span>
-                <span>联系方式</span>
-                <span>进场时间</span>
-              </div>
-              <div class="divRight">
-                <span>{{Wholesale.shopname}}</span>
-                <span>{{Wholesale.phone}}</span>
-                <span>{{Wholesale.addtime}}</span>
+              <div class="contain">
+                <div class="spanBox">
+                  <span class="divLeft">商户名称</span>
+                  <span class="divRight">{{Wholesale.shopname}}</span>
+                </div>
+                <div class="spanBox">
+                  <span class="divLeft">联系方式</span>
+                  <span class="divRight">{{Wholesale.phone}}</span>
+                </div>
+                <div class="spanBox">
+                  <span class="divLeft">进场日期</span>
+                  <span class="divRight">{{Wholesale.addtime}}</span>
+                </div>
               </div>
               <template slot="title">
                 <i class="arrow">
@@ -189,17 +222,23 @@
                   <img src="../assets/销售.png" alt="">
                 </i>零售
               </template>
-              <div class="divLeft divLeftBox">
-                <span>销售企业</span>
-                <span class="divLeftTwo">地址</span>
-                <span>企业法人</span>
-                <span>统一社会信用代码</span>
-              </div>
-              <div class="divRight divRightTwo">
-                <span>张庄综合交易农产品批发市场</span>
-                <span>济南市槐荫区济齐路与西外环</span>
-                <span>{{Retail.applyname}}</span>
-                <span>{{Retail.industrial}}</span>
+              <div class="contain">
+                <div class="spanBox">
+                  <span class="divLeft divLeftBox">销售企业</span>
+                  <span class="divRight divRightTwo">匡山综合交易农产品批发市场</span>
+                </div>
+                <div class="spanBox">
+                  <span class="divLeft divLeftTwo divLeftBox">地址</span>
+                  <span class="divRight divRightTwo">济南市槐荫区济齐路与西外环</span>
+                </div>
+                <div class="spanBox">
+                  <span class="divLeft divLeftBox">企业法人</span>
+                  <span class="divRight divRightTwo">{{Retail.applyname}}</span>
+                </div>
+                <div class="spanBox">
+                  <span class="divLeft divLeftBox">统一社会信用代码</span>
+                  <span class="divRight divRightTwo">{{Retail.industrial}}</span>
+                </div>
               </div>
               <template slot="title">
                 <i class="arrow">
@@ -215,15 +254,19 @@
                   <img src="../assets/零售商户.png" alt="">
                 </i>零售商户
               </template>
-              <div class="divLeft">
-                <span>商户名称</span>
-                <span>联系方式</span>
-                <span>进场日期</span>
-              </div>
-              <div class="divRight">
-                <span>{{Retailshop.shopname}}</span>
-                <span>{{Retailshop.phone}}</span>
-                <span>{{Retailshop.addtime}}</span>
+              <div class="contain">
+                <div class="spanBox">
+                  <span class="divLeft">商户名称</span>
+                  <span class="divRight">{{Retailshop.shopname}}</span>
+                </div>
+                <div class="spanBox">
+                  <span class="divLeft">联系方式</span>
+                  <span class="divRight">{{Retailshop.phone}}</span>
+                </div>
+                <div class="spanBox">
+                  <span class="divLeft">进场日期</span>
+                  <span class="divRight">{{Retailshop.addtime}}</span>
+                </div>
               </div>
               <template slot="title">
                 <i class="arrow">
@@ -239,15 +282,19 @@
                   <img src="../assets/运输.png" alt="">
                 </i>运输
               </template>
-              <div class="divLeft">
-                <span>司机姓名</span>
-                <span>联系方式</span>
-                <span>运输日期</span>
-              </div>
-              <div class="divRight">
-                <span>{{Traffic.name}}</span>
-                <span>{{Traffic.phone}}</span>
-                <span>{{Traffic.time}}</span>
+              <div class="contain">
+                <div class="spanBox">
+                  <span class="divLeft">司机姓名</span>
+                  <span class="divRight">{{Traffic.name}}</span>
+                </div>
+                <div class="spanBox">
+                  <span class="divLeft">联系方式</span>
+                  <span class="divRight">{{Traffic.phone}}</span>
+                </div>
+                <div class="spanBox">
+                  <span class="divLeft">运输日期</span>
+                  <span class="divRight">{{Traffic.time}}</span>
+                </div>
               </div>
               <template slot="title">
                 <i class="arrow">
@@ -260,6 +307,8 @@
       </el-tabs>
     </div>
     <img class="show-img" :src="dataURL" alt="" v-show="!firstFlag">
+    <h4 v-show="h4Css">长按图片保存到手机</h4>
+    <i class="el-icon-arrow-left" v-show="buttonCss" @click="goBack"></i>
   </div>
 </template>
 
@@ -274,6 +323,10 @@ export default {
       firstFlag: true,
       dataURL: '',
       titleDiv: '',
+      indexHeight: '145vh',
+      h4Css: false,
+      buttonCss: false,
+      ID: '168622',
       activeName: 'first',
       activeNameOne: ['1'],
       activeNameTwo: ['1'],
@@ -319,9 +372,11 @@ export default {
     this.firstFlag = true
   },
   mounted () {
+    this.getQueryVariable('id')
+    console.log(this.ID)
     this.axios({
       methods: 'get',
-      url: 'http://10.0.0.243:8082/shop/getStockLog?id=168622',
+      url: 'http://10.0.0.243:8082/shop/getStockLog?id=' + this.ID,
       headers: {
         'Content-Type': 'application/json'
       },
@@ -380,18 +435,30 @@ export default {
     },
     handleChange (val) {
     },
+    goBack () {
+      this.$router.go(0)
+    },
+    getQueryVariable (variable) {
+      var query = location.href
+      var res = query.split('id')[1]
+      var aaa = res.replace(/[^0-9]/ig,"")
+      this.ID = aaa
+    },
     downLoad () {
-      // this.$nextTick(function () {
-      //   this.toImg()
-      // })
+      this.$nextTick(function () {
+        this.toImg()
+      })
       this.titleDiv = 'none'
-      this.toImg()
+      this.indexHeight = '99vh'
+      this.h4Css = true
+      this.buttonCss = true
+      // this.toImg()
     },
     qrcode () {
       let qrcode = new QRCode('qrcode', {
         width: 110,
         height: 110,
-        text: 'https://baidu.com', // 二维码内容
+        text: 'http://10.0.0.171:8080/#/?id=' + this.ID,
         render: 'canvas' // 设置渲染方式（有table和canvas两种方式，默认canvas）
       })
       console.log(qrcode)
@@ -413,10 +480,9 @@ export default {
   margin: 0;
   padding: 0;
   background-color: #dcdbdc;
-  height: 130vh;
+  margin-top: -60px;
   .show-img{
     width: 100%;
-    margin-top: 50%;
   }
   .header{
     height: 42px;
@@ -491,7 +557,6 @@ export default {
     }
   }
   .title{
-    // border: 1px solid red;
     width: 94%;
     margin: auto;
     margin-top: 5px;
@@ -512,31 +577,35 @@ export default {
       font-weight: bolder;
       padding: 0;
       width: 33.3%;
-      // border: 1px solid red;
     }
     /deep/ .el-tabs__active-bar{
       background-color: #0a895c;
-      // width: 56px !important;
+      border-radius: 5px;
+    }
+    /deep/ .el-collapse{
+      border-top: 2px solid #fff;
+      border-top: none;
+      border-bottom: none;
+      border-bottom: 1px solid #fff;
+      border-radius: 5px;
     }
     /deep/ .el-collapse-item__header{
-      height: 20px;
-      line-height: 20px;
+      height: 42px;
+      line-height: 42px;
       color: #0a895c;
       background-color: #dcdbdc;
       font-weight: bolder;
       position: relative;
-      // border: 1px solid red;
       i{
         img{
           width: 15px;
           height: 15px;
-          padding: 3px 2px 0;
+          margin: 12px 2px 0;
         }
       }
       .arrow{
         display: inline-block;
         width: 70%;
-        // border: 1px solid red;
         position: absolute;
         right: 5%;
         text-align: right;
@@ -544,9 +613,6 @@ export default {
     }
     /deep/ .el-icon-arrow-right:before{
       content: "";
-    }
-    /deep/ .el-collapse-item__header.is-active{
-      margin: 10px 0;
     }
     /deep/ .el-collapse-item__wrap{
       border-radius: 5px;
@@ -561,31 +627,58 @@ export default {
           padding-top: 5px;
           padding-bottom: 5px;
         }
-      }
-      .divLeft{
-        width: 30%;
-        margin-left: 5%;
-        .divLeftTwo{
-          letter-spacing: 25px;
-        }
-        .divLeftThree{
-          letter-spacing: 7px;
+        span:nth-last-child(1){
+          border-bottom: none;
         }
       }
-      .divLeftBox{
-        width: 40%;
-      }
-      .divRight{
-        width: 70%;
-        color: #0a895c;
-      }
-      .divRightTwo{
-        span{
-          text-align: right;
-          margin-right: 5%;
+      .contain{
+        width: 100%;
+        .spanBox{
+          border-bottom: 1px solid;
+          border-bottom: 1px solid #edebeb;
+          display: flex;
+          .divLeft{
+            width: 30%;
+            margin-left: 5%;
+            .divLeftTwo{
+              letter-spacing: 25px;
+            }
+            .divLeftThree{
+              letter-spacing: 7px;
+            }
+          }
+          .divLeftBox{
+            width: 40%;
+          }
+          .divRight{
+            width: 70%;
+            color: #0a895c;
+          }
+          .divRightTwo{
+            text-align: right;
+            margin-right: 5%;
+          }
+          .divLeftTwo{
+            letter-spacing: 25px;
+          }
+          .divLeftThree{
+            letter-spacing: 7px;
+          }
+        }
+        .spanBox:nth-last-child(1){
+          border-bottom: none;
         }
       }
     }
+  }
+  .el-icon-arrow-left{
+    color: #fff;
+    position: absolute;
+    font-size: 24px;
+    width: 20px;
+    height: 20px;
+    left: 2%;
+    top: 1%;
   }
 }
 </style>
