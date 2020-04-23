@@ -16,18 +16,18 @@
           <p>追溯日期</p>
           <span>{{stockTime}}</span>
           <p>追溯下载</p>
-          <i @click="downLoad"><img src="../assets/下载.png" alt=""></i>
+          <i @click="downLoad"><img src="../assets/download.png" alt=""></i>
         </div>
       </div>
     </div>
     <div class="title" :style="{display: titleDiv}">
-      <el-tabs class="el-tabs" v-model="activeName" @tab-click="handleClick">
+      <el-tabs class="el-tabs" v-model="activeName">
         <el-tab-pane class="el-tab-pane" label="购买信息" name="first">
-          <el-collapse v-model="activeNameOne" @change="handleChange">
+          <el-collapse v-model="activeNameOne">
             <el-collapse-item  name="1">
               <template slot="title">
                 <i>
-                  <img src="../assets/信息(1).png" alt="">
+                  <img src="../assets/message.png" alt="">
                 </i>购买信息
               </template>
               <div class="contain">
@@ -54,16 +54,16 @@
               </div>
               <template slot="title">
                 <i class="arrow">
-                  <img src="../assets/椭圆 1.png" alt="">
+                  <img src="../assets/pullDown.png" alt="">
                 </i>
               </template>
             </el-collapse-item>
           </el-collapse>
-          <el-collapse v-model="activeNameTwo" @change="handleChange">
+          <el-collapse v-model="activeNameTwo">
             <el-collapse-item name="1">
               <template slot="title">
                 <i>
-                  <img src="../assets/检测(4).png" alt="">
+                  <img src="../assets/detection.png" alt="">
                 </i>检测信息
               </template>
               <div class="contain">
@@ -82,18 +82,18 @@
               </div>
               <template slot="title">
                 <i class="arrow">
-                  <img src="../assets/椭圆 1.png" alt="">
+                  <img src="../assets/pullDown.png" alt="">
                 </i>
               </template>
             </el-collapse-item>
           </el-collapse>
         </el-tab-pane>
         <el-tab-pane label="生产信息" name="second">
-          <el-collapse v-model="activeNameThree" @change="handleChange">
+          <el-collapse v-model="activeNameThree">
             <el-collapse-item name="1">
               <template slot="title">
                 <i>
-                  <img src="../assets/生产.png" alt="">
+                  <img src="../assets/product.png" alt="">
                 </i>生产者信息
               </template>
               <div class="contain">
@@ -112,16 +112,16 @@
               </div>
               <template slot="title">
                 <i class="arrow">
-                  <img src="../assets/椭圆 1.png" alt="">
+                  <img src="../assets/pullDown.png" alt="">
                 </i>
               </template>
             </el-collapse-item>
           </el-collapse>
-          <el-collapse v-model="activeNameFour" @change="handleChange">
+          <el-collapse v-model="activeNameFour">
             <el-collapse-item name="1">
               <template slot="title">
                 <i>
-                  <img src="../assets/环节.png" alt="">
+                  <img src="../assets/link.png" alt="">
                 </i>生产环节
               </template>
               <div class="contain">
@@ -148,18 +148,18 @@
               </div>
               <template slot="title">
                 <i class="arrow">
-                  <img src="../assets/椭圆 1.png" alt="">
+                  <img src="../assets/pullDown.png" alt="">
                 </i>
               </template>
             </el-collapse-item>
           </el-collapse>
         </el-tab-pane>
         <el-tab-pane label="流通信息" name="third">
-          <el-collapse v-model="activeNameFive" @change="handleChange">
+          <el-collapse v-model="activeNameFive">
             <el-collapse-item name="1">
               <template slot="title">
                 <i>
-                  <img src="../assets/销售.png" alt="">
+                  <img src="../assets/market.png" alt="">
                 </i>批发
               </template>
               <div class="contain">
@@ -182,16 +182,16 @@
               </div>
               <template slot="title">
                 <i class="arrow">
-                  <img src="../assets/椭圆 1.png" alt="">
+                  <img src="../assets/pullDown.png" alt="">
                 </i>
               </template>
             </el-collapse-item>
           </el-collapse>
-          <el-collapse v-model="activeNameSix" @change="handleChange">
+          <el-collapse v-model="activeNameSix">
             <el-collapse-item name="1">
               <template slot="title">
                 <i>
-                  <img src="../assets/批发商.png" alt="">
+                  <img src="../assets/wholesaler.png" alt="">
                 </i>批发商户
               </template>
               <div class="contain">
@@ -210,16 +210,16 @@
               </div>
               <template slot="title">
                 <i class="arrow">
-                  <img src="../assets/椭圆 1.png" alt="">
+                  <img src="../assets/pullDown.png" alt="">
                 </i>
               </template>
             </el-collapse-item>
           </el-collapse>
-          <el-collapse v-model="activeNameSeven" @change="handleChange">
+          <el-collapse v-model="activeNameSeven">
             <el-collapse-item name="1">
               <template slot="title">
                 <i>
-                  <img src="../assets/销售.png" alt="">
+                  <img src="../assets/retail.png" alt="">
                 </i>零售
               </template>
               <div class="contain">
@@ -242,16 +242,16 @@
               </div>
               <template slot="title">
                 <i class="arrow">
-                  <img src="../assets/椭圆 1.png" alt="">
+                  <img src="../assets/pullDown.png" alt="">
                 </i>
               </template>
             </el-collapse-item>
           </el-collapse>
-          <el-collapse v-model="activeNameEight" @change="handleChange">
+          <el-collapse v-model="activeNameEight">
             <el-collapse-item name="1">
               <template slot="title">
                 <i>
-                  <img src="../assets/零售商户.png" alt="">
+                  <img src="../assets/retailShop.png" alt="">
                 </i>零售商户
               </template>
               <div class="contain">
@@ -270,16 +270,16 @@
               </div>
               <template slot="title">
                 <i class="arrow">
-                  <img src="../assets/椭圆 1.png" alt="">
+                  <img src="../assets/pullDown.png" alt="">
                 </i>
               </template>
             </el-collapse-item>
           </el-collapse>
-          <el-collapse v-model="activeNameNine" @change="handleChange">
+          <el-collapse v-model="activeNameNine">
             <el-collapse-item name="1">
               <template slot="title">
                 <i>
-                  <img src="../assets/运输.png" alt="">
+                  <img src="../assets/transport.png" alt="">
                 </i>运输
               </template>
               <div class="contain">
@@ -298,7 +298,7 @@
               </div>
               <template slot="title">
                 <i class="arrow">
-                  <img src="../assets/椭圆 1.png" alt="">
+                  <img src="../assets/pullDown.png" alt="">
                 </i>
               </template>
             </el-collapse-item>
@@ -308,6 +308,7 @@
     </div>
     <img class="show-img" :src="dataURL" alt="" v-show="!firstFlag">
     <h4 v-show="h4Css">长按图片保存到手机</h4>
+    <h6>技术支持：济南点量软件有限公司</h6>
     <i class="el-icon-arrow-left" v-show="buttonCss" @click="goBack"></i>
   </div>
 </template>
@@ -326,8 +327,9 @@ export default {
       indexHeight: '145vh',
       h4Css: false,
       buttonCss: false,
-      ID: '168622',
+      ID: '',
       activeName: 'first',
+      // 折叠面板
       activeNameOne: ['1'],
       activeNameTwo: ['1'],
       activeNameThree: ['1'],
@@ -372,8 +374,7 @@ export default {
     this.firstFlag = true
   },
   mounted () {
-    this.getQueryVariable('id')
-    console.log(this.ID)
+    this.getQueryVariable()
     this.axios({
       methods: 'get',
       url: 'http://10.0.0.243:8082/shop/getStockLog?id=' + this.ID,
@@ -383,7 +384,6 @@ export default {
       data: {
       }
     }).then(res => {
-      console.log(res.data)
       if (res.data) {
         this.stockNo = res.data.stockno
         this.stockTime = res.data.stocktime
@@ -425,24 +425,18 @@ export default {
     }).catch(err => {
       console.log(err)
     })
-    // this.qrcode()
     this.$nextTick(function () {
       this.qrcode()
     })
   },
   methods: {
-    handleClick (tab, event) {
-    },
-    handleChange (val) {
-    },
     goBack () {
       this.$router.go(0)
     },
-    getQueryVariable (variable) {
-      var query = location.href
+    getQueryVariable () {
+      var query = window.location.href
       var res = query.split('id')[1]
-      var aaa = res.replace(/[^0-9]/ig,"")
-      this.ID = aaa
+      this.ID = res.replace(/[^0-9]/ig, '')
     },
     downLoad () {
       this.$nextTick(function () {
@@ -452,7 +446,6 @@ export default {
       this.indexHeight = '99vh'
       this.h4Css = true
       this.buttonCss = true
-      // this.toImg()
     },
     qrcode () {
       let qrcode = new QRCode('qrcode', {
@@ -679,6 +672,12 @@ export default {
     height: 20px;
     left: 2%;
     top: 1%;
+  }
+  h6{
+    font-weight: initial;
+    position: absolute;
+    width: 95%;
+    bottom: 0;
   }
 }
 </style>
