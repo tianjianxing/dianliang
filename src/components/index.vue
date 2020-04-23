@@ -21,7 +21,7 @@
       </div>
     </div>
     <div class="title" :style="{display: titleDiv}">
-      <el-tabs class="el-tabs" v-model="activeName">
+      <el-tabs class="el-tabs" v-model="activeName" @tab-click="handleClick">
         <el-tab-pane class="el-tab-pane" label="购买信息" name="first">
           <el-collapse v-model="activeNameOne">
             <el-collapse-item  name="1">
@@ -324,7 +324,7 @@ export default {
       firstFlag: true,
       dataURL: '',
       titleDiv: '',
-      indexHeight: '145vh',
+      indexHeight: '99vh',
       h4Css: false,
       buttonCss: false,
       ID: '',
@@ -430,6 +430,13 @@ export default {
     })
   },
   methods: {
+    handleClick () {
+      if (this.activeName === 'third') {
+        this.indexHeight = '150vh'
+      } else {
+        this.indexHeight = '99vh'
+      }
+    },
     goBack () {
       this.$router.go(0)
     },
@@ -451,7 +458,7 @@ export default {
       let qrcode = new QRCode('qrcode', {
         width: 110,
         height: 110,
-        text: 'http://10.0.0.171:8080/#/?id=' + this.ID,
+        text: 'http://10.0.0.171:8080/#/id/' + this.ID,
         render: 'canvas' // 设置渲染方式（有table和canvas两种方式，默认canvas）
       })
       console.log(qrcode)
@@ -472,6 +479,7 @@ export default {
 .index{
   margin: 0;
   padding: 0;
+  position: relative;
   background-color: #dcdbdc;
   margin-top: -60px;
   .show-img{
@@ -677,6 +685,7 @@ export default {
     font-weight: initial;
     position: absolute;
     width: 95%;
+    color: #666;
     bottom: 0;
   }
 }
